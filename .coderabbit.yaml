@@ -1,0 +1,122 @@
+# yaml-language-server: $schema=https://coderabbit.ai/integrations/schema.v2.json
+
+# CodeRabbit Configuration for claude-skills
+# https://docs.coderabbit.ai/guides/configure-coderabbit
+
+# Language setting
+language: en-US
+
+# Tone of reviews
+tone_instructions: "Be concise, helpful, and constructive. Focus on best practices for TypeScript and Claude skill development."
+
+# Review settings
+reviews:
+  # Review profile: "assertive" for detailed/nitpicky feedback, "chill" for standard feedback
+  profile: "assertive"
+
+  # Request changes for critical issues
+  request_changes_workflow: true
+
+  # High-level summary at the top of reviews
+  high_level_summary: true
+
+  # Sequence diagrams for code flow visualization
+  sequence_diagrams: true
+
+  # Keep walkthrough expanded for easier reading
+  collapse_walkthrough: false
+
+  # Show review status on commits
+  commit_status: true
+
+  # Poem style for review summaries (optional - set to false for more formal)
+  poem: true
+
+  # Review levels for different aspects
+  review_status: true
+
+  # Auto-review settings
+  auto_review:
+    enabled: true
+    drafts: true
+    base_branches:
+      - main
+    ignore_title_keywords:
+      - "DO NOT REVIEW"
+
+  # Linters and security tools
+  tools:
+    # TypeScript/JavaScript linting
+    eslint:
+      enabled: true
+
+    # Security: detect secrets and credentials
+    gitleaks:
+      enabled: true
+
+    # YAML file validation
+    yamllint:
+      enabled: true
+
+  # Lets keep reviewing even closed PRs
+  abort_on_close: false
+
+  # Paths to exclude from reviews
+  path_filters:
+    - "!**/*.skill" # Skip compiled skill files
+    - "!**/.DS_Store" # Skip macOS metadata
+    - "!.git/**" # Skip git directory
+    - "!node_modules/**" # Skip dependencies if added
+    - "!**/*.zip" # Skip zip archives
+
+  # Path-specific instructions
+  path_instructions:
+    - path: "**/*.ts"
+      instructions: |
+        - Check for TypeScript best practices
+        - Ensure proper error handling
+        - Verify type safety
+        - Look for potential runtime issues
+
+    - path: "**/skills/"
+      instructions: |
+        - Verify skill documentation is clear and complete
+        - Check that usage examples are provided
+        - Ensure instructions are easy to follow
+        - Check for potential ambiguity
+        - Suggest improvements for better AI responses specifically limited to Claude 4.5
+        - Review prompt clarity and effectiveness against Claude 4.5 best practices
+        - Compare against Claude Skills best practices: https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices
+        - Reference the Skills API guide: https://docs.claude.com/en/api/skills-guide
+        - Reference prompt engineering guidelines: https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/claude-4-best-practices
+        - Consider Claude 4.5 migration best practices: https://docs.claude.com/en/docs/about-claude/models/migrating-to-claude-4
+        - Reference Claude 4.5 features: https://docs.claude.com/en/docs/about-claude/models/whats-new-claude-4-5
+
+    - path: "README.md"
+      instructions: |
+        - Ensure documentation is up-to-date
+        - Check for broken links
+        - Verify examples are correct
+
+    - path: "**/*"
+      instructions: |
+        - ALWAYS reference Claude's official documentation in reviews. Start each review by consulting the relevant Claude best practices docs.
+        - For skill-related changes, reference https://docs.claude.com/en/docs/agents-and-tools/agent-skills/best-practices and https://docs.claude.com/en/api/skills-guide
+        - For prompt engineering, reference https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/claude-4-best-practices
+        - For Claude 4.5 features and capabilities, reference https://docs.claude.com/en/docs/about-claude/models/whats-new-claude-4-5
+        - When reviewing migration or compatibility, reference https://docs.claude.com/en/docs/about-claude/models/migrating-to-claude-4
+        - Verify that TypeScript code follows Bun runtime conventions
+        - Check for security issues in file operations
+        - Ensure skills are well-documented and easy to use
+        - Each review should cite specific sections from Claude documentation when making suggestions
+
+# Chat settings
+chat:
+  auto_reply: true
+  art: true
+
+# Early access features
+early_access: true
+
+# Enable or disable specific checks
+enable_free_tier: true
