@@ -20,7 +20,7 @@ web_fetch(url=event_url)
 
 ### 2. Extract All Relevant Information
 
-Parse the fetched content to extract ALL of the following fields. Leave no field unextracted if it's available on the page:
+Parse the fetched content to extract ALL the following fields. Leave no field unextracted if it's available on the page:
 
 **Required fields:**
 - **Event title/name** - The official event name
