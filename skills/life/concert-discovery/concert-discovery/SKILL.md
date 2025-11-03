@@ -108,7 +108,7 @@ Present findings organized by:
    - Artist name
    - Venue and date
    - Ticket link if available
-   
+
 2. **Additional Recommendations** - Artists similar to their taste with shows soon:
    - Artist name
    - Why they might enjoy this (brief connection to confirmed preferences)
