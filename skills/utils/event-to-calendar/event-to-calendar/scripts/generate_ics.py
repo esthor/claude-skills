@@ -62,19 +62,24 @@ def escape_text(text):
     return text
 
 
-def format_datetime(dt_str, timezone):
+def format_datetime(dt_str, timezone=None):
     """
     Format datetime string for iCalendar.
     Input: ISO format like "2025-03-15T19:00:00"
-    Output: iCalendar format like "20250315T190000"
+    Output: iCalendar format like "20250315T190000" or with timezone
     """
     try:
-        dt = datetime.fromisoformat(dt_str)
+        # Parse the datetime, handling both naive and timezone-aware strings
+        if 'Z' in dt_str or '+' in dt_str or dt_str.count('-') > 2:
+            # Already has timezone info
+            dt = datetime.fromisoformat(dt_str.replace('Z', '+00:00'))
+        else:
+            # Naive datetime
+            dt = datetime.fromisoformat(dt_str)
         return dt.strftime('%Y%m%dT%H%M%S')
     except ValueError as e:
         print(f"Error parsing datetime '{dt_str}': {e}", file=sys.stderr)
         sys.exit(1)
-
 
 def generate_ics(
     title,
