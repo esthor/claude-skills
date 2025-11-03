@@ -140,8 +140,6 @@ def generate_ics(
     if organizer:
         if organizer_email:
             lines.append(f"ORGANIZER;CN={escape_text(organizer)}:mailto:{organizer_email}")
-        else:
-            lines.append(f"ORGANIZER;CN={escape_text(organizer)}:invalid:nomail")
     
     if categories:
         lines.append(f"CATEGORIES:{escape_text(categories)}")
