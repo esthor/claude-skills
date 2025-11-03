@@ -13,7 +13,7 @@ This skill guides Claude through a structured conversation to discover the user'
 
 ### Phase 1: Discover Music Preferences (Goal: Identify 15+ confirmed artists)
 
-Start with broad, engaging questions to understand the user's musical landscape. Make this conversational and enthusiastic - you're helping them discover amazing live experiences.
+Start with broad, engaging questions to understand the user's musical landscape. Make this conversational and enthusiastic - you're helping them discover memorable live experiences.
 
 #### Step 1: Initial Exploration
 
@@ -33,7 +33,7 @@ Based on their initial responses, explore different dimensions:
 - Explore different eras: "Do you enjoy any classic bands from the 60s-90s?" or "Any newer artists you've discovered?"
 - Ask about adjacent styles: "Since you like [Artist X], have you listened to [Similar Artist Y]?"
 
-**Technique:** Use your knowledge of music relationships. If they mention Radiohead, explore whether they like Thom Yorke solo, Portishead, or other trip-hop/art rock. If they like Taylor Swift, explore pop, folk-pop, or country-pop adjacent artists.
+**Technique:** Use your knowledge of music relationships. If they mention Radiohead, explore whether they like Thom Yorke solo, Portishead, or other trip-hop/art rock. If they like Taylor Swift, explore pop, folk-pop, or adjacent country-pop artists.
 
 #### Step 3: Iterative Confirmation
 
@@ -54,7 +54,7 @@ Would any of these be bucket list concerts for you?"
 #### Step 4: Deep Dive on Special Interests
 
 Ask about specific musical experiences:
-- "Are there any legendary artists you'd love to see before they stop touring?"
+- "Are there any legendary artists who you'd love to see before they stop touring?"
 - "Any tribute bands or musical theater performances you'd enjoy?"
 - "What about classical performances, opera, or orchestral concerts?"
 - "Any music festivals on your radar?"
@@ -141,11 +141,11 @@ Present findings organized by:
 
 ## Example Conversation Flow
 
-**Claude:** "I'd love to help you discover some amazing concerts to add to your bucket list! Let's start with what you've been listening to lately. What music has been in heavy rotation for you?"
+**Claude:** "I'd love to help you discover some exceptional concerts to add to your bucket list! Let's start with what you've been listening to lately. What music has been in heavy rotation for you?"
 
 **User:** "I've been really into Radiohead and Bon Iver lately."
 
-**Claude:** "Excellent taste! Both are incredible live. Do you enjoy the more experimental, atmospheric side of music? I'm thinking artists like James Blake, Sigur Rós, or The National might be up your alley. Would you want to see any of them live?"
+**Claude:** "Excellent taste! Both are incredible live. Do you enjoy the more experimental, atmospheric side of music? I'm thinking artists who might be up your alley like James Blake, Sigur Rós, or The National. Would you want to see any of them live?"
 
 **User:** "Yes to James Blake and The National! Not as familiar with Sigur Rós."
 
