@@ -2,12 +2,12 @@
 A small collection of skills for Claude that I use
 
 ## About
+
 These are just some skills I've made that I find useful. They aren't perfect, but they do get me most or all of the way there on some tasks I want AI to do for me (or do better / more predictably).
 
 I'm sharing them freely here not as a product but for educational and personal use. Don't complain to me when they don't work perfectly for you. No AI product works perfectly.
 
 That said, if you have any suggestions, tweaks, insights, questions, feedback, please do open an issue! I'd love to chat.
-
 ## Note on `.skill` files
 
 A `.skill` file, like many proprietary file types, is just a `.zip` in disguise.
