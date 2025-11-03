@@ -64,9 +64,19 @@ def escape_text(text):
 
 def format_datetime(dt_str, timezone=None):
     """
-    Format datetime string for iCalendar.
-    Input: ISO format like "2025-03-15T19:00:00"
-    Output: iCalendar format like "20250315T190000" or with timezone
+    Convert an ISO-like datetime string to iCalendar DATETIME format (YYYYMMDDTHHMMSS).
+    
+    Accepts ISO 8601 datetime strings that may be naive or include timezone information (for example "2025-03-15T19:00:00" or "2025-03-15T19:00:00Z"). The optional `timezone` parameter is accepted for API compatibility but is not used by this function.
+    
+    Parameters:
+        dt_str (str): ISO-like datetime string to convert.
+        timezone (str | None): Ignored; retained for compatibility.
+    
+    Returns:
+        str: Datetime formatted as `YYYYMMDDTHHMMSS`.
+    
+    Raises:
+        SystemExit: Exits with code 1 after printing a parse error to stderr if `dt_str` cannot be parsed.
     """
     try:
         # Parse the datetime, handling both naive and timezone-aware strings
@@ -99,7 +109,30 @@ def generate_ics(
     geo=None,
     output_path=None
 ):
-    """Generate a complete .ics calendar file with rich multimedia content."""
+    """
+    Generate a complete iCalendar (ICS) event and return its contents as a string.
+    
+    Parameters:
+        title (str): Event summary/title.
+        start (str): Start datetime in an ISO-like format parseable by format_datetime.
+        end (str): End datetime in an ISO-like format parseable by format_datetime.
+        timezone (str): Time zone identifier used for DTSTART/DTEND (added as TZID).
+        location (str, optional): Event location.
+        description (str, optional): Event description; special characters will be escaped for ICS.
+        url (str, optional): URL associated with the event.
+        organizer (str, optional): Organizer common name.
+        organizer_email (str, optional): Organizer email address (used if provided).
+        categories (str, optional): Comma-separated categories for the event.
+        status (str, optional): Event status (defaults to "CONFIRMED").
+        image (str, optional): URI to an image to include via IMAGE property.
+        attachments (list[str], optional): List of attachment URIs; MIME type may be inferred from file extensions.
+        conference_url (str, optional): URI for a conference/meeting link (added as CONFERENCE).
+        geo (str, optional): Geographic coordinates for the event (included verbatim in the GEO property).
+        output_path (str, optional): If provided, write the ICS content to this file path.
+    
+    Returns:
+        ics_content (str): The serialized ICS content (CRLF line endings, folded to 75 characters).
+    """
     
     # Generate unique identifier
     uid = f"{uuid.uuid4()}@claude.ai"
@@ -192,6 +225,11 @@ def generate_ics(
 
 
 def main():
+    """
+    Parse command-line arguments for event properties and create an iCalendar (.ics) file or print it to stdout.
+    
+    The function defines and parses required arguments (--title, --start, --end, --timezone) and several optional arguments (location, description, url, organizer and organizer email, categories, status, image, attachments, conference URL, geo coordinates, and output path) and then generates the corresponding .ics content which is written to the given output file when --output is provided or emitted to standard output otherwise.
+    """
     parser = argparse.ArgumentParser(
         description='Generate .ics calendar files with comprehensive event information.',
         formatter_class=argparse.RawDescriptionHelpFormatter
